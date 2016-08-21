@@ -1,0 +1,14 @@
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+project/
+
+# Ignore application.conf to avoid posting sensitive data
+conf/application.conf
+
+.DS_Store
