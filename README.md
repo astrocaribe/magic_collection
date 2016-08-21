@@ -81,7 +81,20 @@ applied to return specific collections, i.e., by color, rarity, etc.
 ##### Example response
 ```json
 {
-  "hello": "world"
+	"data":
+		{
+			"id": 1,
+			"name": "Regenerate",
+			"color": "Green",
+			"mana_cost": 1,
+			"converted_mana_cost": 2,
+			"type": "Enchant Creature",
+			"text": "Regenerate enchanted creature.",
+			"expansion": "V",
+			"power": null,
+			"toughness": null,
+			"ratity": "Common"
+		}
 }
 ```
 
