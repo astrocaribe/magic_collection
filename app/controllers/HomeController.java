@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import play.Logger;
 import play.libs.Json;
 import play.mvc.*;
 
@@ -11,6 +12,7 @@ import views.html.*;
  * to the application's home page.
  */
 public class HomeController extends Controller {
+
 
     /**
      * An action that renders an HTML page with a welcome message.
@@ -23,8 +25,11 @@ public class HomeController extends Controller {
 //    }
 
     public Result index() {
+        Logger.info(String.format("Starting request - (%s) [%s]", request().method(), request().path()));
         final ObjectNode json = Json.newObject();
         json.put("hello","world");
+
+        Logger.info(String.format("Finished request - (%s) [%s]", request().method(), request().path()));
 
         return ok(json);
     }

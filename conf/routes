@@ -3,9 +3,15 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /                           controllers.HomeController.index()
+
+# REST card routes
+GET /cards                          controllers.CardController.getAllCards()
+
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
+
 # An example controller showing how to write asynchronous code
 GET     /message                    controllers.AsyncController.message
 
