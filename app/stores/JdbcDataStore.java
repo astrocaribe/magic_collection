@@ -27,9 +27,7 @@ public class JdbcDataStore implements DataStore {
      * Constructor accepting a data source.
      * @param dataSource SQL data connection
      */
-    public JdbcDataStore(final DataSource dataSource) {
-        this.dbi = new DBI("jdbc");
-    }
+    public JdbcDataStore(final DataSource dataSource) { this.dbi = new DBI(dataSource); }
 
     /**
      * {@inheritDoc}
@@ -37,7 +35,7 @@ public class JdbcDataStore implements DataStore {
     @Override
     public List<Card> getAllCards() {
         final CardDAO dao = this.dbi.onDemand(CardDAO.class);
-        final List<Card> cards = (List<Card>) dao.getAllCards();
+        final List<Card> cards = dao.getAllCards();
         return cards;
     }
 }

@@ -7,6 +7,8 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import org.skife.jdbi.v2.sqlobject.mixins.Transactional;
 import org.skife.jdbi.v2.sqlobject.stringtemplate.UseStringTemplate3StatementLocator;
 
+import java.util.List;
+
 /**
  * Created by astrocaribe on 8/25/16.
  *
@@ -30,6 +32,6 @@ public interface CardDAO extends Transactional<CardDAO> {
             "SELECT c.id, c.name, c.color, c.mana_cost, c.converted_mana_cost, c.type, c.text, c.expansion, c.power, c.toughness, c.rarity\n" +
                     "FROM cards c;"
     )
-    Card getAllCards();
+    List<Card> getAllCards();
 
 }

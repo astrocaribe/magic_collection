@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Card {
     // Create class entities
     private String id;
-    private final String recordType = "cards";
+    private final String recordType = "card";
     private String name;
     private String color;
     @JsonProperty("mana_cost")

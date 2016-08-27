@@ -30,7 +30,7 @@ public class CardController extends Controller {
      * <p>Returns the card collection. All cards in the collection are returned in JSON format.</p>
      */
     public Result getAllCards() {
-        Logger.info(String.format("Starting request - (%s) [%s]", request().method(), request().path()));
+        Logger.info(String.format("Starting request - [%s %s]", request().method(), request().path()));
 
         try {
             final List<Card> result = dataStore.getAllCards();
@@ -42,7 +42,7 @@ public class CardController extends Controller {
             return ok(content);
 
         } finally {
-            Logger.info(String.format("Finished request - (%s) [%s]", request().method(), request().path()));
+            Logger.info(String.format("Finished request - [%s %s]", request().method(), request().path()));
         }
     }
 
