@@ -17,3 +17,5 @@ libraryDependencies ++= Seq(
   "org.powermock" % "powermock-module-junit4" % "1.6.1" % "test",
   "org.powermock" % "powermock-api-mockito" % "1.6.1" % "test"
 )
+
+routesGenerator := InjectedRoutesGenerator
