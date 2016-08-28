@@ -38,4 +38,15 @@ public class JdbcDataStore implements DataStore {
         final List<Card> cards = dao.getAllCards();
         return cards;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Card> searchByFilters(String colorFilter, String typeFilter, String rarityFilter) {
+        final CardDAO dao = this.dbi.onDemand(CardDAO.class);
+        final List<Card> cards = dao.searchByFilters(colorFilter, typeFilter, rarityFilter);
+        return cards;
+
+    }
 }

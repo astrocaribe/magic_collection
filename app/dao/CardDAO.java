@@ -2,6 +2,7 @@ package dao;
 
 import mappers.CardMapper;
 import models.Card;
+import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import org.skife.jdbi.v2.sqlobject.mixins.Transactional;
@@ -26,12 +27,28 @@ import java.util.List;
 public interface CardDAO extends Transactional<CardDAO> {
     /**
      * Returns the entire card collection
-     * @return requested card collection
+     * @return requested {@Link List<Card>} collection
      */
     @SqlQuery(
             "SELECT c.id, c.name, c.color, c.mana_cost, c.converted_mana_cost, c.type, c.text, c.expansion, c.power, c.toughness, c.rarity\n" +
-                    "FROM cards c;"
+                    "FROM cards c"
     )
     List<Card> getAllCards();
 
+
+
+    /**
+     * Returns a filtered card collection
+     * @return filtered {@Link List<Card>} collection
+     */
+    @SqlQuery(
+            "SELECT c.id, c.name, c.color, c.mana_cost, c.converted_mana_cost, c.type, c.text, c.expansion, c.power, c.toughness, c.rarity\n" +
+            "  FROM cards c" +
+            "  WHERE (:color IS NULL OR c.color = :color) " +
+            "  AND (:type IS NULL OR c.type = :type) " +
+            "  AND (:rarity IS NULL OR c.rarity = :rarity)"
+    )
+    List<Card> searchByFilters(@Bind("color") final String color,
+                               @Bind("type") final String type,
+                               @Bind("rarity") final String rarity);
 }

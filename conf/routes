@@ -7,3 +7,4 @@ GET /ping                           controllers.HomeController.ping()
 
 # REST card routes
 GET /cards                          controllers.CardController.getAllCards()
+GET /cards/filtered                 controllers.CardController.getCardsByFilter()
