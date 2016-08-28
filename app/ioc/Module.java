@@ -7,6 +7,9 @@ import stores.DataStore;
 
 /**
  * Created by astrocaribe on 8/26/16.
+ *
+ * Binders for the ILoggerFactory --> LoggerFactory and
+ * DataStore --> DataStoreProvider (JdbcDataStore)
  */
 public class Module extends AbstractModule {
     @Override
