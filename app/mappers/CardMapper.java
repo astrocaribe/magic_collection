@@ -33,7 +33,7 @@ public class CardMapper implements ResultSetMapper<Card>{
         card.setName(r.getString("name"));
         card.setColor(r.getString("color"));
         card.setManaCost(r.getInt("mana_cost"));
-        card.setConvertedManCost(r.getInt("converted_mana_cost"));
+        card.setConvertedManaCost(r.getInt("converted_mana_cost"));
         card.setType(r.getString("type"));
         card.setText(r.getString("text"));
         card.setExpansion(r.getString("expansion"));

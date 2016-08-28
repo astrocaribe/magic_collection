@@ -38,7 +38,7 @@ public class Card {
     public String getName() { return this.name; }
     public String getColor() { return this.color; }
     public Integer getManaCost() { return this.manaCost; }
-    public Integer getConvertedManCost() { return this.convertedManaCost; }
+    public Integer getConvertedManaCost() { return this.convertedManaCost; }
     public String getType() { return this.type; }
     public String getText() { return this.text; }
     public String getExpansion() { return this.expansion; }
@@ -55,7 +55,7 @@ public class Card {
     public void setName(String name) { this.name = name; }
     public void setColor(String color) { this.color = color; }
     public void setManaCost(Integer manaCost) { this.manaCost = manaCost; }
-    public void setConvertedManCost(Integer convertedManCost) { this.convertedManaCost = convertedManCost; }
+    public void setConvertedManaCost(Integer convertedManaCost) { this.convertedManaCost = convertedManaCost; }
     public void setType(String type) { this.type = type; }
     public void setText(String text) { this.text = text; }
     public void setExpansion(String expansion) { this.expansion = expansion; }
