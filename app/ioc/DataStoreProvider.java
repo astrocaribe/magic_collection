@@ -1,6 +1,5 @@
 package ioc;
 
-
 import play.Configuration;
 import play.db.DB;
 import stores.DataStore;
@@ -11,6 +10,8 @@ import javax.inject.Provider;
 
 /**
  * Created by astrocaribe on 8/26/16.
+ *
+ * Interface for how the service interacts with the resource data.
  */
 public class DataStoreProvider implements Provider<DataStore> {
     private final Configuration configuration;
