@@ -13,7 +13,7 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "5.1.39",
   "org.jdbi" % "jdbi" % "2.59",
   "org.antlr" % "stringtemplate" % "3.2",
-  "org.assertj" % "assertj-core" % "1.7.1" % "test",
+  "org.assertj" % "assertj-core" % "2.5.0" % "test",
   "org.powermock" % "powermock-module-junit4" % "1.6.1" % "test",
   "org.powermock" % "powermock-api-mockito" % "1.6.1" % "test"
 )
