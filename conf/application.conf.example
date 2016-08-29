@@ -338,6 +338,11 @@ play.db {
 # EBean: https://playframework.com/documentation/latest/JavaEbean
 # Anorm: https://www.playframework.com/documentation/latest/ScalaAnorm
 #
+
+# For a Mock datasource
+# datastore.datasource="mock"
+
+# For a live datasource
 datastore.datasource="jdbc"
 db {
   # You can declare as many datasources as you want.

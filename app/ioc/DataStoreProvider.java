@@ -4,6 +4,7 @@ import play.Configuration;
 import play.db.DB;
 import stores.DataStore;
 import stores.JdbcDataStore;
+import stores.MockDataStore;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -23,6 +24,6 @@ public class DataStoreProvider implements Provider<DataStore> {
     public DataStore get() {
         return "jdbc".equalsIgnoreCase(this.configuration.getString("datastore.datasource"))
                 ? new JdbcDataStore(DB.getDataSource())
-                : null;
+                : new MockDataStore();
     }
 }
