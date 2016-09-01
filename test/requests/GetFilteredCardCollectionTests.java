@@ -124,7 +124,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getName()).isEqualTo("Dogmeat");
             softly.assertThat(parsedItem.getColor()).isEqualTo("Brown");
             softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
-            softly.assertThat(parsedItem.getType()).isEqualTo("Creature Dog");
+            softly.assertThat(parsedItem.getType()).isEqualTo("CreatureDog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);
@@ -138,7 +138,7 @@ public class GetFilteredCardCollectionTests {
     }
 
     @Test
-    public void jsonResponseWithFiltersTest() {
+    public void jsonResponseWithColorFilterTest() {
         running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/cards/filtered?filter[color]=white"));
 
@@ -163,10 +163,136 @@ public class GetFilteredCardCollectionTests {
             // Hold all assertions until all test in this block are complete
             SoftAssertions softly = new SoftAssertions();
             softly.assertThat(parsedItem.getId()).isEqualTo("1002");
+            softly.assertThat(parsedItem.getName()).isEqualTo("GlaDOS");
+            softly.assertThat(parsedItem.getColor()).isEqualTo("White");
+            softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
+            softly.assertThat(parsedItem.getType()).isEqualTo("SummonAI");
+            softly.assertThat(parsedItem.getText()).isEqualTo("Blow the world up. Then make cake!");
+            softly.assertThat(parsedItem.getExpansion()).isEqualTo("Portal");
+            softly.assertThat(parsedItem.getPower()).isEqualTo(6);
+            softly.assertThat(parsedItem.getToughness()).isEqualTo(4);
+            softly.assertThat(parsedItem.getManaCost()).isEqualTo(4);
+            softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(7);
+            softly.assertThat(parsedItem.getRarity()).isEqualTo("SuperRare");
+
+            softly.assertAll();
+        });
+    }
+
+    @Test
+    public void jsonResponseWithTypeFilterTest() {
+        running(testApp, () -> {
+            Result result = route(fakeRequest(GET, "/cards/filtered?filter[type]=creaturedog"));
+
+            // Assure there is only one data node.
+            JsonNode fullJson = Json.parse(contentAsString(result));
+            assertThat(fullJson.fieldNames()).containsExactly("data");
+
+            // Assure that object is an array, and that there are 2 records.
+            JsonNode innerJson = fullJson.get("data");
+            assertThat(innerJson.isArray()).isTrue();
+            assertThat(innerJson).hasSize(1);
+
+            // Retrieve only the first record to verify response
+            JsonNode item = innerJson.get(0);
+            Card parsedItem = Json.fromJson(item, Card.class);
+
+            assertThat(item.fieldNames()).containsOnly(
+                    "id", "name", "color", "type", "text", "mana_cost", "converted_mana_cost",
+                    "recordType", "power", "toughness", "expansion", "rarity"
+            );
+
+            // Hold all assertions until all test in this block are complete
+            SoftAssertions softly = new SoftAssertions();
+            softly.assertThat(parsedItem.getId()).isEqualTo("1001");
             softly.assertThat(parsedItem.getName()).isEqualTo("Dogmeat");
             softly.assertThat(parsedItem.getColor()).isEqualTo("Brown");
             softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
-            softly.assertThat(parsedItem.getType()).isEqualTo("Creature Dog");
+            softly.assertThat(parsedItem.getType()).isEqualTo("CreatureDog");
+            softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
+            softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
+            softly.assertThat(parsedItem.getPower()).isEqualTo(5);
+            softly.assertThat(parsedItem.getToughness()).isEqualTo(5);
+            softly.assertThat(parsedItem.getManaCost()).isEqualTo(10);
+            softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(10);
+            softly.assertThat(parsedItem.getRarity()).isEqualTo("Rare");
+
+            softly.assertAll();
+        });
+    }
+
+    @Test
+    public void jsonResponseWithRarityFilterTest() {
+        running(testApp, () -> {
+            Result result = route(fakeRequest(GET, "/cards/filtered?filter[rarity]=rare"));
+
+            // Assure there is only one data node.
+            JsonNode fullJson = Json.parse(contentAsString(result));
+            assertThat(fullJson.fieldNames()).containsExactly("data");
+
+            // Assure that object is an array, and that there are 2 records.
+            JsonNode innerJson = fullJson.get("data");
+            assertThat(innerJson.isArray()).isTrue();
+            assertThat(innerJson).hasSize(1);
+
+            // Retrieve only the first record to verify response
+            JsonNode item = innerJson.get(0);
+            Card parsedItem = Json.fromJson(item, Card.class);
+
+            assertThat(item.fieldNames()).containsOnly(
+                    "id", "name", "color", "type", "text", "mana_cost", "converted_mana_cost",
+                    "recordType", "power", "toughness", "expansion", "rarity"
+            );
+
+            // Hold all assertions until all test in this block are complete
+            SoftAssertions softly = new SoftAssertions();
+            softly.assertThat(parsedItem.getId()).isEqualTo("1001");
+            softly.assertThat(parsedItem.getName()).isEqualTo("Dogmeat");
+            softly.assertThat(parsedItem.getColor()).isEqualTo("Brown");
+            softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
+            softly.assertThat(parsedItem.getType()).isEqualTo("CreatureDog");
+            softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
+            softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
+            softly.assertThat(parsedItem.getPower()).isEqualTo(5);
+            softly.assertThat(parsedItem.getToughness()).isEqualTo(5);
+            softly.assertThat(parsedItem.getManaCost()).isEqualTo(10);
+            softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(10);
+            softly.assertThat(parsedItem.getRarity()).isEqualTo("Rare");
+
+            softly.assertAll();
+        });
+    }
+
+    @Test
+    public void jsonResponseWithMultipleFiltersTest() {
+        running(testApp, () -> {
+            Result result = route(fakeRequest(GET, "/cards/filtered?filter[color]=brown&filter[rarity]=rare"));
+
+            // Assure there is only one data node.
+            JsonNode fullJson = Json.parse(contentAsString(result));
+            assertThat(fullJson.fieldNames()).containsExactly("data");
+
+            // Assure that object is an array, and that there are 2 records.
+            JsonNode innerJson = fullJson.get("data");
+            assertThat(innerJson.isArray()).isTrue();
+            assertThat(innerJson).hasSize(1);
+
+            // Retrieve only the first record to verify response
+            JsonNode item = innerJson.get(0);
+            Card parsedItem = Json.fromJson(item, Card.class);
+
+            assertThat(item.fieldNames()).containsOnly(
+                    "id", "name", "color", "type", "text", "mana_cost", "converted_mana_cost",
+                    "recordType", "power", "toughness", "expansion", "rarity"
+            );
+
+            // Hold all assertions until all test in this block are complete
+            SoftAssertions softly = new SoftAssertions();
+            softly.assertThat(parsedItem.getId()).isEqualTo("1001");
+            softly.assertThat(parsedItem.getName()).isEqualTo("Dogmeat");
+            softly.assertThat(parsedItem.getColor()).isEqualTo("Brown");
+            softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
+            softly.assertThat(parsedItem.getType()).isEqualTo("CreatureDog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);

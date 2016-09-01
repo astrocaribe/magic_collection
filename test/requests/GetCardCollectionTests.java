@@ -1,7 +1,6 @@
 package requests;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import ioc.Module;
 import models.Card;
 import org.junit.Before;
 import org.junit.Test;
@@ -92,7 +91,7 @@ public class GetCardCollectionTests {
             softly.assertThat(parsedItem.getName()).isEqualTo("Dogmeat");
             softly.assertThat(parsedItem.getColor()).isEqualTo("Brown");
             softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
-            softly.assertThat(parsedItem.getType()).isEqualTo("Creature Dog");
+            softly.assertThat(parsedItem.getType()).isEqualTo("CreatureDog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);
