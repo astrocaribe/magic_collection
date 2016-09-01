@@ -40,6 +40,11 @@ public class MockDataStore implements DataStore {
         Card mockReturnValue = mockCard();
         cardResults.add(mockReturnValue);
 
+        // Add another card to the response
+        Card anotherMockReturnValue = anotherMockCard();
+        cardResults.add(anotherMockReturnValue);
+
+
         return cardResults;
     }
 

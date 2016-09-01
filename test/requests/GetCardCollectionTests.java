@@ -1,6 +1,7 @@
 package requests;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import ioc.Module;
 import models.Card;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,25 +11,30 @@ import org.assertj.core.api.SoftAssertions;
 import play.inject.guice.GuiceApplicationBuilder;
 import play.libs.Json;
 import play.mvc.Result;
+import stores.DataStore;
+import stores.MockDataStore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import static play.inject.Bindings.bind;
 import static play.test.Helpers.*;
 
 /**
  * Created by tleblanc on 8/30/16.
  */
 public class GetCardCollectionTests {
-    Application fakeApp;
+    Application testApp;
 
     @Before
     public void initialize() {
-        fakeApp = new GuiceApplicationBuilder().configure("datastore.datasource", "mock").build();
+        testApp = new GuiceApplicationBuilder()
+                .overrides(bind(DataStore.class).to(MockDataStore.class))
+                .build();
     }
 
     @Test
     public void responseOk() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/cards"));
             assertThat(result.status()).isEqualTo(OK);
         });
@@ -36,7 +42,7 @@ public class GetCardCollectionTests {
 
     @Test
     public void responseContentType() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/cards"));
             assertThat(result.contentType()).isEqualTo("application/json");
         });
@@ -44,7 +50,7 @@ public class GetCardCollectionTests {
 
     @Test
     public void responseCharType() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/cards"));
             assertThat(result.charset()).isEqualTo("utf-8");
         });
@@ -52,7 +58,7 @@ public class GetCardCollectionTests {
 
     @Test
     public void responseMessageIsJSON() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/cards"));
             assertThat(Json.parse(contentAsString(result))).isInstanceOf(JsonNode.class);
         });
@@ -60,7 +66,7 @@ public class GetCardCollectionTests {
 
     @Test
     public void jsonResponseTest() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/cards"));
 
             // Assure there is only one data node.

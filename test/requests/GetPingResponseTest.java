@@ -5,24 +5,29 @@ import org.junit.Test;
 import play.Application;
 import play.inject.guice.GuiceApplicationBuilder;
 import play.mvc.Result;
+import stores.DataStore;
+import stores.MockDataStore;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static play.inject.Bindings.bind;
 import static play.test.Helpers.*;
 
 /**
  * Created by astrocaribe on 8/29/16.
  */
 public class GetPingResponseTest {
-    Application fakeApp;
+    Application testApp;
 
     @Before
     public void initialize() {
-        fakeApp = new GuiceApplicationBuilder().configure("datastore.datasource", "mock").build();
+        testApp = new GuiceApplicationBuilder()
+                .overrides(bind(DataStore.class).to(MockDataStore.class))
+                .build();
     }
 
     @Test
     public void responseOk() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/ping"));
             assertThat(result.status()).isEqualTo(OK);
         });
@@ -30,7 +35,7 @@ public class GetPingResponseTest {
 
     @Test
     public void responseMessageClassIsString() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/ping"));
             assertThat(contentAsString(result)).isInstanceOf(String.class);
         });
@@ -39,7 +44,7 @@ public class GetPingResponseTest {
 
     @Test
     public void responseMessageReturned() {
-        running(fakeApp, () -> {
+        running(testApp, () -> {
             Result result = route(fakeRequest(GET, "/ping"));
             assertThat(contentAsString(result)).isEqualTo("\"This service is alive!\"");
         });
