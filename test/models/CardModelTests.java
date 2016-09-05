@@ -56,8 +56,14 @@ public class CardModelTests {
 
     @Test
     public void typeAccessor() {
-        subject.setType("Prisoner Human");
-        assertThat(subject.getType()).isEqualTo("Prisoner Human");
+        subject.setType("Prisoner");
+        assertThat(subject.getType()).isEqualTo("Prisoner");
+    }
+
+    @Test
+    public void subTypeAccessor() {
+        subject.setType("Human");
+        assertThat(subject.getType()).isEqualTo("Human");
     }
 
     @Test
@@ -97,7 +103,8 @@ public class CardModelTests {
         subject.setColor("Beige");
         subject.setManaCost(100);
         subject.setConvertedManaCost(200);
-        subject.setType("Prisoner Human");
+        subject.setType("Prisoner");
+        subject.setSubType("Human");
         subject.setText("She though it was cake.");
         subject.setExpansion("Portal");
         subject.setPower(5000);
@@ -111,7 +118,8 @@ public class CardModelTests {
         assertThat(json.get("color").asText()).isEqualTo("Beige");
         assertThat(json.get("mana_cost").asInt()).isEqualTo(100);
         assertThat(json.get("converted_mana_cost").asInt()).isEqualTo(200);
-        assertThat(json.get("type").asText()).isEqualTo("Prisoner Human");
+        assertThat(json.get("type").asText()).isEqualTo("Prisoner");
+        assertThat(json.get("sub_type").asText()).isEqualTo("Human");
         assertThat(json.get("text").asText()).isEqualTo("She though it was cake.");
         assertThat(json.get("expansion").asText()).isEqualTo("Portal");
         assertThat(json.get("power").asInt()).isEqualTo(5000);

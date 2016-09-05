@@ -64,7 +64,8 @@ public class MockDataStore implements DataStore {
         resource.setId("1001");
         resource.setName("Dogmeat");
         resource.setColor("Brown");
-        resource.setType("CreatureDog");
+        resource.setType("Creature");
+        resource.setSubType("Dog");
         resource.setText("Untap target attacking creature. Then Dogmeat eats your lunch.");
         resource.setExpansion("Fallout IV");
         resource.setPower(5);
@@ -83,7 +84,8 @@ public class MockDataStore implements DataStore {
         resource.setId("1002");
         resource.setName("GlaDOS");
         resource.setColor("White");
-        resource.setType("SummonAI");
+        resource.setType("Summon");
+        resource.setSubType("AI");
         resource.setText("Blow the world up. Then make cake!");
         resource.setExpansion("Portal");
         resource.setPower(6);
