@@ -81,7 +81,7 @@ public class GetCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "text", "mana_cost", "converted_mana_cost",
+                    "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
                     "recordType", "power", "toughness", "expansion", "rarity"
             );
 
@@ -91,7 +91,8 @@ public class GetCardCollectionTests {
             softly.assertThat(parsedItem.getName()).isEqualTo("Dogmeat");
             softly.assertThat(parsedItem.getColor()).isEqualTo("Brown");
             softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
-            softly.assertThat(parsedItem.getType()).isEqualTo("CreatureDog");
+            softly.assertThat(parsedItem.getType()).isEqualTo("Creature");
+            softly.assertThat(parsedItem.getSubType()).isEqualTo("Dog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);

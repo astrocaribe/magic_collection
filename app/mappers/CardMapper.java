@@ -35,6 +35,7 @@ public class CardMapper implements ResultSetMapper<Card>{
         card.setManaCost(r.getInt("mana_cost"));
         card.setConvertedManaCost(r.getInt("converted_mana_cost"));
         card.setType(r.getString("type"));
+        card.setSubType(r.getString("sub_type"));
         card.setText(r.getString("text"));
         card.setExpansion(r.getString("expansion"));
         card.setPower(r.getInt("power"));

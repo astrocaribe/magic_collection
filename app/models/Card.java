@@ -26,6 +26,8 @@ public class Card {
     @JsonProperty("converted_mana_cost")
     private Integer convertedManaCost;
     private String type;
+    @JsonProperty("sub_type")
+    private String subType;
     private String text;
     private String expansion;
     private Integer power;
@@ -40,6 +42,7 @@ public class Card {
     public Integer getManaCost() { return this.manaCost; }
     public Integer getConvertedManaCost() { return this.convertedManaCost; }
     public String getType() { return this.type; }
+    public String getSubType() { return this.subType; }
     public String getText() { return this.text; }
     public String getExpansion() { return this.expansion; }
     public Integer getPower() { return this.power; }
@@ -57,6 +60,7 @@ public class Card {
     public void setManaCost(Integer manaCost) { this.manaCost = manaCost; }
     public void setConvertedManaCost(Integer convertedManaCost) { this.convertedManaCost = convertedManaCost; }
     public void setType(String type) { this.type = type; }
+    public void setSubType(String subType) { this.subType = subType; }
     public void setText(String text) { this.text = text; }
     public void setExpansion(String expansion) { this.expansion = expansion; }
     public void setPower(Integer power) { this.power = power; }

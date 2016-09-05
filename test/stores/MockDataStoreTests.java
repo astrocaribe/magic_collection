@@ -38,8 +38,8 @@ public class MockDataStoreTests {
 
     @Test
     public void getFilteredByTypeReturnsOneResults() {
-        assertThat(subject.searchByFilters(null, "creaturedog", null)).hasSize(1);
-        assertThat(subject.searchByFilters(null, "creaturedog", null)).extracting("id").containsOnly("1001");
+        assertThat(subject.searchByFilters(null, "creature", null)).hasSize(1);
+        assertThat(subject.searchByFilters(null, "creature", null)).extracting("id").containsOnly("1001");
     }
 
     @Test
