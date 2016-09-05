@@ -1,10 +1,15 @@
-# Cards Micro Resource
+# Magic The Gathering Card Collection Micro Resource
 
 ## Scope
 
 This micro resource is used to manage a Magic The Gathering card collection.
 This service will allow returning a collection of stored cards, with the option
 to filter, as well as to add, update, and delete cards from the collection.
+
+
+## Project Status
+[![Build Status](https://travis-ci.org/astrocaribe/magic_collection.svg?branch=develop)](https://travis-ci.org/astrocaribe/magic_collection)  
+This project build status is tracked with Travis CI.
 
 ## Setup
 
@@ -53,14 +58,50 @@ Documentation for each RESTful endpoint.
 <br />
 <br />
 
-## GET Card Collection
+## GET Endpoint "Alive" Resource
+
+Verifies that the service is alive.
+
+##### HTTP Verb + Route(s):
+```
+GET /ping
+```
+
+##### Required inputs/Query strings
+
+  * None
+
+##### Example request
+```shell
+    $> curl http://localhost:9000/ping
+```
+
+##### Example response
+```html
+  "This service is alive!"
+```
+
+##### Resource Data
+The main MySQL database (magic_the_gathering) will supply all data for the
+response.
+
+MySQL Tables:
+
+  * None
+
+<br />
+<br />
+
+
+## GET Card Collection/Resource
 
 Get zero or more cards resources in the collection. An optional filter may be
 applied to return specific collections, i.e., by color, rarity, etc.
 
-##### HTTP Verb + Route:
+##### HTTP Verb + Route(s):
 ```
-    GET /cards
+GET /cards
+GET /cards/filtered
 ```
 
 ##### Required inputs/Query strings
@@ -75,7 +116,7 @@ applied to return specific collections, i.e., by color, rarity, etc.
 
 ##### Example request
 ```shell
-    $> curl http://localhost:9000/cards?filter[color]='red'
+    $> curl http://localhost:9000/cards/filtered?filter[color]='red'
 ```
 
 ##### Example response

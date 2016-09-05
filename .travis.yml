@@ -1,9 +1,12 @@
 language: java
 jdk:
   - oraclejdk8
-  - oraclejdk7
+
+# Set environment variables for easy update
 env:
   - ACTIVATOR_VERSION=1.3.10
+
+# Download and unzip activator for testing suite
 before_script:
   - curl -o activator-${ACTIVATOR_VERSION}-minimal.zip "https://downloads.typesafe.com/typesafe-activator/${ACTIVATOR_VERSION}/typesafe-activator-${ACTIVATOR_VERSION}-minimal.zip"
   - unzip -q activator-${ACTIVATOR_VERSION}-minimal.zip
