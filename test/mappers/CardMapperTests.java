@@ -94,6 +94,9 @@ public class CardMapperTests {
     public void testTextMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getText); }
 
     @Test
+    public void testFlavorTextMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getFlavorText); }
+
+    @Test
     public void testManaCostMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getManaCost); }
 
     @Test

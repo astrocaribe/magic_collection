@@ -29,6 +29,8 @@ public class Card {
     @JsonProperty("sub_type")
     private String subType;
     private String text;
+    @JsonProperty("flavor_text")
+    private String flavorText;
     private String expansion;
     private Integer power;
     private Integer toughness;
@@ -45,6 +47,7 @@ public class Card {
     public String getType() { return this.type; }
     public String getSubType() { return this.subType; }
     public String getText() { return this.text; }
+    public String getFlavorText() { return this.flavorText; }
     public String getExpansion() { return this.expansion; }
     public Integer getPower() { return this.power; }
     public Integer getToughness() { return this.toughness; }
@@ -64,6 +67,7 @@ public class Card {
     public void setType(String type) { this.type = type; }
     public void setSubType(String subType) { this.subType = subType; }
     public void setText(String text) { this.text = text; }
+    public void setFlavorText(String flavorText) { this.flavorText = flavorText; }
     public void setExpansion(String expansion) { this.expansion = expansion; }
     public void setPower(Integer power) { this.power = power; }
     public void setToughness(Integer toughness) { this.toughness = toughness; }

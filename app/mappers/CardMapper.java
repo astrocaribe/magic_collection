@@ -37,6 +37,7 @@ public class CardMapper implements ResultSetMapper<Card>{
         card.setType(r.getString("type"));
         card.setSubType(r.getString("sub_type"));
         card.setText(r.getString("text"));
+        card.setFlavorText(r.getString("flavor_text"));
         card.setExpansion(r.getString("expansion"));
         card.setPower(r.getInt("power"));
         card.setToughness(r.getInt("toughness"));
