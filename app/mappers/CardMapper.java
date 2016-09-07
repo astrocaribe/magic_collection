@@ -43,6 +43,7 @@ public class CardMapper implements ResultSetMapper<Card>{
         card.setToughness(r.getInt("toughness"));
         card.setRarity(r.getString("rarity"));
         card.setQuantity(r.getInt("quantity"));
+        card.setCardNumber(r.getString("card_number"));
 
         return card;
     };

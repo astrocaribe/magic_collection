@@ -109,6 +109,12 @@ public class CardModelTests {
     }
 
     @Test
+    public void cardNumberAccessor() {
+        subject.setCardNumber("10x");
+        assertThat(subject.getCardNumber()).isEqualTo("10x");
+    }
+
+    @Test
     public void jsonFormat() {
         subject.setId(1001L);
         subject.setName("Chell Johnson");
@@ -124,6 +130,7 @@ public class CardModelTests {
         subject.setToughness(5000);
         subject.setRarity("Super Rare");
         subject.setQuantity(1);
+        subject.setCardNumber("100x");
 
         JsonNode json = Json.toJson(subject);
 
@@ -141,6 +148,7 @@ public class CardModelTests {
         assertThat(json.get("toughness").asInt()).isEqualTo(5000);
         assertThat(json.get("rarity").asText()).isEqualTo("Super Rare");
         assertThat(json.get("quantity").asInt()).isEqualTo(1);
+        assertThat(json.get("card_number").asText()).isEqualTo("100x");
     }
 
 }

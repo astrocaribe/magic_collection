@@ -32,6 +32,7 @@ public class CardMapperTests {
         card.setColor("Black");
         card.setType("Enchantment");
         card.setText("Shroud. This permanent or player cannot be in the target of spells or abilities.");
+        card.setFlavorText("It is going to be yuggge!");
         card.setManaCost(6);
         card.setConvertedManaCost(10);
         card.setExpansion("RealLife");
@@ -39,6 +40,7 @@ public class CardMapperTests {
         card.setToughness(5);
         card.setRarity("Rare");
         card.setQuantity(1);
+        card.setCardNumber("1000");
 
         return card;
     }
@@ -53,6 +55,7 @@ public class CardMapperTests {
         setupStringFieldMap(resultSet, "color", resultCard.getColor());
         setupStringFieldMap(resultSet, "type", resultCard.getType());
         setupStringFieldMap(resultSet, "text", resultCard.getText());
+        setupStringFieldMap(resultSet, "flavor_text", resultCard.getFlavorText());
         setupIntegerFieldMap(resultSet, "mana_cost", resultCard.getManaCost());
         setupIntegerFieldMap(resultSet, "converted_mana_cost", resultCard.getConvertedManaCost());
         setupStringFieldMap(resultSet, "expansion", resultCard.getExpansion());
@@ -60,6 +63,7 @@ public class CardMapperTests {
         setupIntegerFieldMap(resultSet, "toughness", resultCard.getToughness());
         setupStringFieldMap(resultSet, "rarity", resultCard.getRarity());
         setupIntegerFieldMap(resultSet, "quantity", resultCard.getQuantity());
+        setupStringFieldMap(resultSet, "card_number", resultCard.getCardNumber());
 
         return resultSet;
 
@@ -116,6 +120,9 @@ public class CardMapperTests {
 
     @Test
     public void testQuantityMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getQuantity); }
+
+    @Test
+    public void testCardNumberMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getCardNumber); }
 
 
 
