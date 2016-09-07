@@ -41,6 +41,7 @@ public class CardMapper implements ResultSetMapper<Card>{
         card.setPower(r.getInt("power"));
         card.setToughness(r.getInt("toughness"));
         card.setRarity(r.getString("rarity"));
+        card.setQuantity(r.getInt("quantity"));
 
         return card;
     };
