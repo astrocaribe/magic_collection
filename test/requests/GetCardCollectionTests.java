@@ -81,8 +81,8 @@ public class GetCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
-                    "recordType", "power", "toughness", "expansion", "rarity"
+                    "id", "name", "color", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
+                    "recordType", "power", "toughness", "expansion", "rarity", "quantity", "card_number"
             );
 
             // Hold all assertions until all test in this block are complete
@@ -94,12 +94,15 @@ public class GetCardCollectionTests {
             softly.assertThat(parsedItem.getType()).isEqualTo("Creature");
             softly.assertThat(parsedItem.getSubType()).isEqualTo("Dog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
+            softly.assertThat(parsedItem.getFlavorText()).isEqualTo("Go get him, boy! - The Vault Dweller");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);
             softly.assertThat(parsedItem.getToughness()).isEqualTo(5);
             softly.assertThat(parsedItem.getManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getRarity()).isEqualTo("Rare");
+            softly.assertThat(parsedItem.getQuantity()).isEqualTo(3);
+            softly.assertThat(parsedItem.getCardNumber()).isEqualTo("10c");
 
             softly.assertAll();
         });

@@ -67,12 +67,15 @@ public class MockDataStore implements DataStore {
         resource.setType("Creature");
         resource.setSubType("Dog");
         resource.setText("Untap target attacking creature. Then Dogmeat eats your lunch.");
+        resource.setFlavorText("Go get him, boy! - The Vault Dweller");
         resource.setExpansion("Fallout IV");
         resource.setPower(5);
         resource.setToughness(5);
         resource.setRarity("Rare");
         resource.setManaCost(10);
         resource.setConvertedManaCost(10);
+        resource.setQuantity(3);
+        resource.setCardNumber("10c");
 
         return resource;
     }
@@ -87,12 +90,15 @@ public class MockDataStore implements DataStore {
         resource.setType("Summon");
         resource.setSubType("AI");
         resource.setText("Blow the world up. Then make cake!");
+        resource.setFlavorText("The cake is a lie! - Chell");
         resource.setExpansion("Portal");
         resource.setPower(6);
         resource.setToughness(4);
         resource.setRarity("SuperRare");
         resource.setManaCost(4);
         resource.setConvertedManaCost(7);
+        resource.setQuantity(2);
+        resource.setCardNumber("100b");
 
         return resource;
     }

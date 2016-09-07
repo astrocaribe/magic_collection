@@ -73,6 +73,12 @@ public class CardModelTests {
     }
 
     @Test
+    public void flavorTextAccessor() {
+        subject.setFlavorText("The cake is a lie! - Chell");
+        assertThat(subject.getFlavorText()).isEqualTo("The cake is a lie! - Chell");
+    }
+
+    @Test
     public void expansionAccessor() {
         subject.setExpansion("Portal");
         assertThat(subject.getExpansion()).isEqualTo("Portal");
@@ -97,6 +103,18 @@ public class CardModelTests {
     }
 
     @Test
+    public void quantityAccessor() {
+        subject.setQuantity(6);
+        assertThat(subject.getQuantity()).isEqualTo(6);
+    }
+
+    @Test
+    public void cardNumberAccessor() {
+        subject.setCardNumber("10x");
+        assertThat(subject.getCardNumber()).isEqualTo("10x");
+    }
+
+    @Test
     public void jsonFormat() {
         subject.setId(1001L);
         subject.setName("Chell Johnson");
@@ -106,10 +124,13 @@ public class CardModelTests {
         subject.setType("Prisoner");
         subject.setSubType("Human");
         subject.setText("She though it was cake.");
+        subject.setFlavorText("The cake is a lie - Chell");
         subject.setExpansion("Portal");
         subject.setPower(5000);
         subject.setToughness(5000);
         subject.setRarity("Super Rare");
+        subject.setQuantity(1);
+        subject.setCardNumber("100x");
 
         JsonNode json = Json.toJson(subject);
 
@@ -121,10 +142,13 @@ public class CardModelTests {
         assertThat(json.get("type").asText()).isEqualTo("Prisoner");
         assertThat(json.get("sub_type").asText()).isEqualTo("Human");
         assertThat(json.get("text").asText()).isEqualTo("She though it was cake.");
+        assertThat(json.get("flavor_text").asText()).isEqualTo("The cake is a lie - Chell");
         assertThat(json.get("expansion").asText()).isEqualTo("Portal");
         assertThat(json.get("power").asInt()).isEqualTo(5000);
         assertThat(json.get("toughness").asInt()).isEqualTo(5000);
         assertThat(json.get("rarity").asText()).isEqualTo("Super Rare");
+        assertThat(json.get("quantity").asInt()).isEqualTo(1);
+        assertThat(json.get("card_number").asText()).isEqualTo("100x");
     }
 
 }

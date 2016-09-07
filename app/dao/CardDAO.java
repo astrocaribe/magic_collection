@@ -31,7 +31,7 @@ public interface CardDAO extends Transactional<CardDAO> {
      */
     @SqlQuery(
             "SELECT c.id, c.name, c.color, c.mana_cost, c.converted_mana_cost, c.type, c.sub_type, " +
-                    "c.text, c.expansion, c.power, c.toughness, c.rarity\n" +
+                    "c.text, c.flavor_text, c.expansion, c.power, c.toughness, c.rarity, c.quantity, c.card_number\n" +
                     "FROM cards c"
     )
     List<Card> getAllCards();
@@ -44,7 +44,7 @@ public interface CardDAO extends Transactional<CardDAO> {
      */
     @SqlQuery(
             "SELECT c.id, c.name, c.color, c.mana_cost, c.converted_mana_cost, c.type, c.sub_type, " +
-                    "c.text, c.expansion, c.power, c.toughness, c.rarity\n" +
+                    "c.text, c.flavor_text, c.expansion, c.power, c.toughness, c.rarity, c.quantity, c.card_number\n" +
             "  FROM cards c" +
             "  WHERE (:color IS NULL OR c.color = :color) " +
             "  AND (:type IS NULL OR c.type = :type) " +
