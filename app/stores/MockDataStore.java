@@ -73,6 +73,7 @@ public class MockDataStore implements DataStore {
         resource.setRarity("Rare");
         resource.setManaCost(10);
         resource.setConvertedManaCost(10);
+        resource.setQuantity(3);
 
         return resource;
     }
@@ -93,6 +94,7 @@ public class MockDataStore implements DataStore {
         resource.setRarity("SuperRare");
         resource.setManaCost(4);
         resource.setConvertedManaCost(7);
+        resource.setQuantity(2);
 
         return resource;
     }

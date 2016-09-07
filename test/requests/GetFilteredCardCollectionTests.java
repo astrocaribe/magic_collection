@@ -115,7 +115,7 @@ public class GetFilteredCardCollectionTests {
 
             assertThat(item.fieldNames()).containsOnly(
                     "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
-                    "recordType", "power", "toughness", "expansion", "rarity"
+                    "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
             // Hold all assertions until all test in this block are complete
@@ -133,6 +133,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getRarity()).isEqualTo("Rare");
+            softly.assertThat(parsedItem.getQuantity()).isEqualTo(3);
 
             softly.assertAll();
         });
@@ -158,7 +159,7 @@ public class GetFilteredCardCollectionTests {
 
             assertThat(item.fieldNames()).containsOnly(
                     "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
-                    "recordType", "power", "toughness", "expansion", "rarity"
+                    "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
             // Hold all assertions until all test in this block are complete
@@ -176,6 +177,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getManaCost()).isEqualTo(4);
             softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(7);
             softly.assertThat(parsedItem.getRarity()).isEqualTo("SuperRare");
+            softly.assertThat(parsedItem.getQuantity()).isEqualTo(2);
 
             softly.assertAll();
         });
@@ -201,7 +203,7 @@ public class GetFilteredCardCollectionTests {
 
             assertThat(item.fieldNames()).containsOnly(
                     "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
-                    "recordType", "power", "toughness", "expansion", "rarity"
+                    "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
             // Hold all assertions until all test in this block are complete
@@ -219,6 +221,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getRarity()).isEqualTo("Rare");
+            softly.assertThat(parsedItem.getQuantity()).isEqualTo(3);
 
             softly.assertAll();
         });
@@ -244,7 +247,7 @@ public class GetFilteredCardCollectionTests {
 
             assertThat(item.fieldNames()).containsOnly(
                     "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
-                    "recordType", "power", "toughness", "expansion", "rarity"
+                    "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
             // Hold all assertions until all test in this block are complete
@@ -262,6 +265,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getRarity()).isEqualTo("Rare");
+            softly.assertThat(parsedItem.getQuantity()).isEqualTo(3);
 
             softly.assertAll();
         });
@@ -287,7 +291,7 @@ public class GetFilteredCardCollectionTests {
 
             assertThat(item.fieldNames()).containsOnly(
                     "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
-                    "recordType", "power", "toughness", "expansion", "rarity"
+                    "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
             // Hold all assertions until all test in this block are complete
@@ -305,6 +309,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getConvertedManaCost()).isEqualTo(10);
             softly.assertThat(parsedItem.getRarity()).isEqualTo("Rare");
+            softly.assertThat(parsedItem.getQuantity()).isEqualTo(3);
 
             softly.assertAll();
         });

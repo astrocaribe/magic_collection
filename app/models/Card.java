@@ -33,6 +33,7 @@ public class Card {
     private Integer power;
     private Integer toughness;
     private String rarity;
+    private Integer quantity;
 
     // Getters
     public String getId() { return id; }
@@ -48,6 +49,7 @@ public class Card {
     public Integer getPower() { return this.power; }
     public Integer getToughness() { return this.toughness; }
     public String getRarity() { return this.rarity; }
+    public Integer getQuantity() { return this.quantity; }
 
     // Setters
     @JsonIgnore
@@ -66,4 +68,5 @@ public class Card {
     public void setPower(Integer power) { this.power = power; }
     public void setToughness(Integer toughness) { this.toughness = toughness; }
     public void setRarity(String rarity) { this.rarity = rarity; }
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
 }

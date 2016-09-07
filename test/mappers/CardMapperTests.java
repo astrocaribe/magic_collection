@@ -38,6 +38,7 @@ public class CardMapperTests {
         card.setPower(5);
         card.setToughness(5);
         card.setRarity("Rare");
+        card.setQuantity(1);
 
         return card;
     }
@@ -58,6 +59,7 @@ public class CardMapperTests {
         setupIntegerFieldMap(resultSet, "power", resultCard.getPower());
         setupIntegerFieldMap(resultSet, "toughness", resultCard.getToughness());
         setupStringFieldMap(resultSet, "rarity", resultCard.getRarity());
+        setupIntegerFieldMap(resultSet, "quantity", resultCard.getQuantity());
 
         return resultSet;
 
@@ -108,6 +110,9 @@ public class CardMapperTests {
 
     @Test
     public void testRarityMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getRarity); }
+
+    @Test
+    public void testQuantityMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getQuantity); }
 
 
 
