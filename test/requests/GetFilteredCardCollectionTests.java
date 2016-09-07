@@ -114,7 +114,7 @@ public class GetFilteredCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
+                    "id", "name", "color", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
                     "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
@@ -127,6 +127,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getType()).isEqualTo("Creature");
             softly.assertThat(parsedItem.getSubType()).isEqualTo("Dog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
+            softly.assertThat(parsedItem.getFlavorText()).isEqualTo("Go get him, boy! - The Vault Dweller");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);
             softly.assertThat(parsedItem.getToughness()).isEqualTo(5);
@@ -158,7 +159,7 @@ public class GetFilteredCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
+                    "id", "name", "color", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
                     "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
@@ -171,6 +172,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getType()).isEqualTo("Summon");
             softly.assertThat(parsedItem.getSubType()).isEqualTo("AI");
             softly.assertThat(parsedItem.getText()).isEqualTo("Blow the world up. Then make cake!");
+            softly.assertThat(parsedItem.getFlavorText()).isEqualTo("The cake is a lie! - Chell");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Portal");
             softly.assertThat(parsedItem.getPower()).isEqualTo(6);
             softly.assertThat(parsedItem.getToughness()).isEqualTo(4);
@@ -202,7 +204,7 @@ public class GetFilteredCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
+                    "id", "name", "color", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
                     "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
@@ -215,6 +217,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getType()).isEqualTo("Creature");
             softly.assertThat(parsedItem.getSubType()).isEqualTo("Dog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
+            softly.assertThat(parsedItem.getFlavorText()).isEqualTo("Go get him, boy! - The Vault Dweller");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);
             softly.assertThat(parsedItem.getToughness()).isEqualTo(5);
@@ -246,7 +249,7 @@ public class GetFilteredCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
+                    "id", "name", "color", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
                     "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
@@ -259,6 +262,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getType()).isEqualTo("Creature");
             softly.assertThat(parsedItem.getSubType()).isEqualTo("Dog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
+            softly.assertThat(parsedItem.getFlavorText()).isEqualTo("Go get him, boy! - The Vault Dweller");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);
             softly.assertThat(parsedItem.getToughness()).isEqualTo(5);
@@ -290,7 +294,7 @@ public class GetFilteredCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "sub_type", "text", "mana_cost", "converted_mana_cost",
+                    "id", "name", "color", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
                     "recordType", "power", "toughness", "expansion", "rarity", "quantity"
             );
 
@@ -303,6 +307,7 @@ public class GetFilteredCardCollectionTests {
             softly.assertThat(parsedItem.getType()).isEqualTo("Creature");
             softly.assertThat(parsedItem.getSubType()).isEqualTo("Dog");
             softly.assertThat(parsedItem.getText()).isEqualTo("Untap target attacking creature. Then Dogmeat eats your lunch.");
+            softly.assertThat(parsedItem.getFlavorText()).isEqualTo("Go get him, boy! - The Vault Dweller");
             softly.assertThat(parsedItem.getExpansion()).isEqualTo("Fallout IV");
             softly.assertThat(parsedItem.getPower()).isEqualTo(5);
             softly.assertThat(parsedItem.getToughness()).isEqualTo(5);

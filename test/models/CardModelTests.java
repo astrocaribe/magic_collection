@@ -73,6 +73,12 @@ public class CardModelTests {
     }
 
     @Test
+    public void flavorTextAccessor() {
+        subject.setFlavorText("The cake is a lie! - Chell");
+        assertThat(subject.getFlavorText()).isEqualTo("The cake is a lie! - Chell");
+    }
+
+    @Test
     public void expansionAccessor() {
         subject.setExpansion("Portal");
         assertThat(subject.getExpansion()).isEqualTo("Portal");
@@ -112,6 +118,7 @@ public class CardModelTests {
         subject.setType("Prisoner");
         subject.setSubType("Human");
         subject.setText("She though it was cake.");
+        subject.setFlavorText("The cake is a lie - Chell");
         subject.setExpansion("Portal");
         subject.setPower(5000);
         subject.setToughness(5000);
@@ -128,6 +135,7 @@ public class CardModelTests {
         assertThat(json.get("type").asText()).isEqualTo("Prisoner");
         assertThat(json.get("sub_type").asText()).isEqualTo("Human");
         assertThat(json.get("text").asText()).isEqualTo("She though it was cake.");
+        assertThat(json.get("flavor_text").asText()).isEqualTo("The cake is a lie - Chell");
         assertThat(json.get("expansion").asText()).isEqualTo("Portal");
         assertThat(json.get("power").asInt()).isEqualTo(5000);
         assertThat(json.get("toughness").asInt()).isEqualTo(5000);
