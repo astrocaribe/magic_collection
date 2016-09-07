@@ -36,6 +36,8 @@ public class Card {
     private Integer toughness;
     private String rarity;
     private Integer quantity;
+    @JsonProperty("card_number")
+    private String cardNumber;
 
     // Getters
     public String getId() { return id; }
@@ -53,6 +55,7 @@ public class Card {
     public Integer getToughness() { return this.toughness; }
     public String getRarity() { return this.rarity; }
     public Integer getQuantity() { return this.quantity; }
+    public String getCardNumber() { return this.cardNumber; }
 
     // Setters
     @JsonIgnore
@@ -73,4 +76,5 @@ public class Card {
     public void setToughness(Integer toughness) { this.toughness = toughness; }
     public void setRarity(String rarity) { this.rarity = rarity; }
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
+    public void setCardNumber(String cardNumber ) { this.cardNumber = cardNumber; }
 }

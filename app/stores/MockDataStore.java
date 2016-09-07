@@ -75,6 +75,7 @@ public class MockDataStore implements DataStore {
         resource.setManaCost(10);
         resource.setConvertedManaCost(10);
         resource.setQuantity(3);
+        resource.setCardNumber("10c");
 
         return resource;
     }
@@ -97,6 +98,7 @@ public class MockDataStore implements DataStore {
         resource.setManaCost(4);
         resource.setConvertedManaCost(7);
         resource.setQuantity(2);
+        resource.setCardNumber("100b");
 
         return resource;
     }
