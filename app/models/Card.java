@@ -3,6 +3,8 @@ package models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 /**
  * Created by astrocaribe on 8/25/16.
  *
@@ -20,7 +22,7 @@ public class Card {
     private String id;
     private final String recordType = "card";
     private String name;
-    private String color;
+    private List<Color> colors;
     @JsonProperty("mana_cost")
     private Integer manaCost;
     @JsonProperty("converted_mana_cost")
@@ -43,7 +45,7 @@ public class Card {
     public String getId() { return id; }
     public String getRecordType() { return this.recordType; }
     public String getName() { return this.name; }
-    public String getColor() { return this.color; }
+    public List<Color> getColors() { return this.colors; }
     public Integer getManaCost() { return this.manaCost; }
     public Integer getConvertedManaCost() { return this.convertedManaCost; }
     public String getType() { return this.type; }
@@ -64,7 +66,7 @@ public class Card {
     public void setId(String id) { this.id = id; }
 
     public void setName(String name) { this.name = name; }
-    public void setColor(String color) { this.color = color; }
+    public void setColors(List<Color> colors) { this.colors = colors; }
     public void setManaCost(Integer manaCost) { this.manaCost = manaCost; }
     public void setConvertedManaCost(Integer convertedManaCost) { this.convertedManaCost = convertedManaCost; }
     public void setType(String type) { this.type = type; }

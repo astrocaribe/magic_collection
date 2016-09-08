@@ -1,11 +1,14 @@
 package mappers;
 
 import models.Card;
+import models.Color;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by astrocaribe on 8/25/16.
@@ -31,7 +34,7 @@ public class CardMapper implements ResultSetMapper<Card>{
 
         card.setId(r.getLong("id"));
         card.setName(r.getString("name"));
-        card.setColor(r.getString("color"));
+//        card.setColors(r.getString("color"));
         card.setManaCost(r.getInt("mana_cost"));
         card.setConvertedManaCost(r.getInt("converted_mana_cost"));
         card.setType(r.getString("type"));
@@ -45,6 +48,16 @@ public class CardMapper implements ResultSetMapper<Card>{
         card.setQuantity(r.getInt("quantity"));
         card.setCardNumber(r.getString("card_number"));
 
+        // Create an object for card colors
+        List<Color> colors = new ArrayList<>();
+        Color cardColors = new Color();
+        cardColors.setColor1(r.getString("color_1"));
+        cardColors.setColor2(r.getString("color_2"));
+        cardColors.setColor3(r.getString("color_3"));
+        colors.add(cardColors);
+
+        card.setColors(colors);
+
         return card;
-    };
+    }
 }

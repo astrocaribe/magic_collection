@@ -5,6 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import play.libs.Json;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -38,8 +41,14 @@ public class CardModelTests {
 
     @Test
     public void colorAccessor() {
-        subject.setColor("Beige");
-        assertThat(subject.getColor()).isEqualTo("Beige");
+        // Create an object for card colors
+        List<Color> colors = new ArrayList<>();
+        Color cardColors = new Color();
+        cardColors.setColor1("Beige");
+        colors.add(cardColors);
+
+        subject.setColors(colors);
+        assertThat(subject.getColors().get(0).getColor1()).isEqualTo("Beige");
     }
 
     @Test
@@ -116,9 +125,15 @@ public class CardModelTests {
 
     @Test
     public void jsonFormat() {
+        // Create an object for card colors
+        List<Color> colors = new ArrayList<>();
+        Color cardColors = new Color();
+        cardColors.setColor1("Beige");
+        colors.add(cardColors);
+
         subject.setId(1001L);
         subject.setName("Chell Johnson");
-        subject.setColor("Beige");
+        subject.setColors(colors);
         subject.setManaCost(100);
         subject.setConvertedManaCost(200);
         subject.setType("Prisoner");
@@ -136,7 +151,7 @@ public class CardModelTests {
 
         assertThat(json.get("id").asText()).isEqualTo("1001");
         assertThat(json.get("name").asText()).isEqualTo("Chell Johnson");
-        assertThat(json.get("color").asText()).isEqualTo("Beige");
+        assertThat(json.get("colors").get(0).get("color_1").asText()).isEqualTo("Beige");
         assertThat(json.get("mana_cost").asInt()).isEqualTo(100);
         assertThat(json.get("converted_mana_cost").asInt()).isEqualTo(200);
         assertThat(json.get("type").asText()).isEqualTo("Prisoner");

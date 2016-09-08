@@ -50,7 +50,7 @@ public class CardController extends Controller {
     /**
      * GET Filtered Card Collection
      *
-     * <p>Returns a filtered card collection, containing zero or more on=bjects. All cards in the collection are
+     * <p>Returns a filtered card collection, containing zero or more objects. All cards in the collection are
      * returned in JSON format.</p>
      */
     public Result getCardsByFilter() {
