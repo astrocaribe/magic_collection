@@ -48,7 +48,7 @@ public class CardModelTests {
         colors.add(cardColors);
 
         subject.setColors(colors);
-        assertThat(subject.getColors().get(0).getColor1().toString()).isEqualTo("Beige");
+        assertThat(subject.getColors().get(0).getColor1()).isEqualTo("Beige");
     }
 
     @Test

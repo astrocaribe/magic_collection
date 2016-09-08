@@ -16,9 +16,9 @@ public interface DataStore {
 
     /**
      * Return a card collection filtered by the following:
-     * @param colorFilter
-     * @param typeFilter
-     * @param rarityFilter
+     * @param colorFilter color to filter by
+     * @param typeFilter type to filter by
+     * @param rarityFilter rarity to filter by
      * @return a filtered {@Link List<Card>} collection
      */
     List<Card> searchByFilters(String colorFilter, String typeFilter, String rarityFilter);

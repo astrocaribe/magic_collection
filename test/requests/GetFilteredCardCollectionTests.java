@@ -114,7 +114,7 @@ public class GetFilteredCardCollectionTests {
             Card parsedItem = Json.fromJson(item, Card.class);
 
             assertThat(item.fieldNames()).containsOnly(
-                    "id", "name", "color", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
+                    "id", "name", "colors", "type", "sub_type", "text", "flavor_text", "mana_cost", "converted_mana_cost",
                     "recordType", "power", "toughness", "expansion", "rarity", "quantity", "card_number"
             );
 
@@ -122,7 +122,7 @@ public class GetFilteredCardCollectionTests {
             SoftAssertions softly = new SoftAssertions();
             softly.assertThat(parsedItem.getId()).isEqualTo("1001");
             softly.assertThat(parsedItem.getName()).isEqualTo("Dogmeat");
-            softly.assertThat(parsedItem.getColors()).isEqualTo("Brown");
+            softly.assertThat(parsedItem.getColors().get(0).getColor1()).isEqualTo("Brown");
             softly.assertThat(parsedItem.getRecordType()).isEqualTo("card");
             softly.assertThat(parsedItem.getType()).isEqualTo("Creature");
             softly.assertThat(parsedItem.getSubType()).isEqualTo("Dog");

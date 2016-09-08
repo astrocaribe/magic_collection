@@ -6,7 +6,6 @@ import com.google.inject.Injector;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.slf4j.ILoggerFactory;
 import play.Configuration;
 import stores.DataStore;
 
@@ -37,7 +36,6 @@ public class ModuleTest {
             @Override
             protected void configure() {
                 bind(Configuration.class).toInstance(mockConfiguration);
-//                bind(ILoggerFactory.class).toInstance(Mockito.mock(ILoggerFactory.class));
             }
         };
 

@@ -59,5 +59,5 @@ public class CardMapper implements ResultSetMapper<Card>{
         card.setColors(colors);
 
         return card;
-    };
+    }
 }

@@ -46,9 +46,12 @@ public class MockDataStore implements DataStore {
 
         final List<Card> cardResults =
                 resources.values().stream()
-                .filter(card -> colorFilter == null || card.getColors().contains(colorFilter.toLowerCase()))
-                .filter(card -> typeFilter == null || typeFilter.equals(card.getType().toLowerCase()))
-                .filter(card -> rarityFilter == null || rarityFilter.equals(card.getRarity().toLowerCase()))
+                .filter(card -> colorFilter == null ||
+                        card.getColors().get(0).getColor1().equalsIgnoreCase(colorFilter) ||
+                        card.getColors().get(0).getColor2().equalsIgnoreCase(colorFilter) ||
+                        card.getColors().get(0).getColor3().equalsIgnoreCase(colorFilter))
+                .filter(card -> typeFilter == null || typeFilter.equalsIgnoreCase(card.getType().toLowerCase()))
+                .filter(card -> rarityFilter == null || rarityFilter.equalsIgnoreCase(card.getRarity().toLowerCase()))
                 .collect(Collectors.toList());
 
         return cardResults;
@@ -66,6 +69,7 @@ public class MockDataStore implements DataStore {
         Color cardColors = new Color();
         cardColors.setColor1("Brown");
         cardColors.setColor2("Black");
+        cardColors.setColor3("Green");
         colors.add(cardColors);
 
 
@@ -97,6 +101,7 @@ public class MockDataStore implements DataStore {
         Color cardColors = new Color();
         cardColors.setColor1("White");
         cardColors.setColor2("Black");
+        cardColors.setColor3("Gray");
         colors.add(cardColors);
 
 
