@@ -2,12 +2,15 @@ package mappers;
 
 import models.Card;
 
+import models.Color;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 /**
  * Created by astrocaribe on 8/28/16.
@@ -27,9 +30,15 @@ public class CardMapperTests {
     private static Card createMockCard() {
         final Card card = new Card();
 
+        // Create an object for card colors
+        List<Color> colors = new ArrayList<>();
+        Color cardColors = new Color();
+        cardColors.setColor1("Black");
+        colors.add(cardColors);
+
         card.setId("1000");
         card.setName("Vagenda of Manocide");
-        card.setColor("Black");
+        card.setColors(colors);
         card.setType("Enchantment");
         card.setText("Shroud. This permanent or player cannot be in the target of spells or abilities.");
         card.setFlavorText("It is going to be yuggge!");
@@ -52,7 +61,7 @@ public class CardMapperTests {
         Mockito.when(resultSet.getLong("id")).thenReturn(cardIdLong);
 
         setupStringFieldMap(resultSet, "name", resultCard.getName());
-        setupStringFieldMap(resultSet, "color", resultCard.getColor());
+//        setupStringFieldMap(resultSet, "color", resultCard.getColors());
         setupStringFieldMap(resultSet, "type", resultCard.getType());
         setupStringFieldMap(resultSet, "text", resultCard.getText());
         setupStringFieldMap(resultSet, "flavor_text", resultCard.getFlavorText());
@@ -64,6 +73,9 @@ public class CardMapperTests {
         setupStringFieldMap(resultSet, "rarity", resultCard.getRarity());
         setupIntegerFieldMap(resultSet, "quantity", resultCard.getQuantity());
         setupStringFieldMap(resultSet, "card_number", resultCard.getCardNumber());
+
+        final Color color = resultCard.getColors().get(0);
+        setupStringFieldMap(resultSet, "color_1", color.getColor1());
 
         return resultSet;
 
@@ -89,7 +101,7 @@ public class CardMapperTests {
     public void testNameMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getName); }
 
     @Test
-    public void testColorMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getColor); }
+    public void testColorsMapsCorrectly() { assertThatListMapsCorrectly(Card::getColors); }
 
     @Test
     public void testTypeMapsCorrectly() { assertThatFieldMapsCorrectly(Card::getType); }
@@ -137,6 +149,19 @@ public class CardMapperTests {
         final Object expectedValue = valueSupplier.apply(expectedCard);
         final Object actualValue = valueSupplier.apply(mapped);
         assertThat(actualValue).isEqualTo(expectedValue);
+    }
+
+    private void assertThatListMapsCorrectly(Function<Card, List<?>> valueSupplier) {
+        final Card mapped;
+        try {
+            mapped = mapper.map(0, mockResultsSet, null);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        final List<?> expectedValue = valueSupplier.apply(expectedCard);
+        final List<?> actualValue = valueSupplier.apply(mapped);
+        assertThat(actualValue).usingFieldByFieldElementComparator().containsOnlyElementsOf(expectedValue);
     }
 
 }

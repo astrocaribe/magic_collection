@@ -1,6 +1,7 @@
 package stores;
 
 import models.Card;
+import models.Color;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public class MockDataStore implements DataStore {
 
         final List<Card> cardResults =
                 resources.values().stream()
-                .filter(card -> colorFilter == null || colorFilter.equals(card.getColor().toLowerCase()))
+                .filter(card -> colorFilter == null || card.getColors().contains(colorFilter.toLowerCase()))
                 .filter(card -> typeFilter == null || typeFilter.equals(card.getType().toLowerCase()))
                 .filter(card -> rarityFilter == null || rarityFilter.equals(card.getRarity().toLowerCase()))
                 .collect(Collectors.toList());
@@ -60,10 +61,18 @@ public class MockDataStore implements DataStore {
     private static Card mockCard() {
         Card resource = new Card();
 
+        // Create an array of colors
+        List<Color> colors = new ArrayList<>();
+        Color cardColors = new Color();
+        cardColors.setColor1("Brown");
+        cardColors.setColor2("Black");
+        colors.add(cardColors);
+
+
         // Place static mock values in the response
         resource.setId("1001");
         resource.setName("Dogmeat");
-        resource.setColor("Brown");
+        resource.setColors(colors);
         resource.setType("Creature");
         resource.setSubType("Dog");
         resource.setText("Untap target attacking creature. Then Dogmeat eats your lunch.");
@@ -83,10 +92,18 @@ public class MockDataStore implements DataStore {
     private static Card anotherMockCard() {
         Card resource = new Card();
 
+        // Create an array of colors
+        List<Color> colors = new ArrayList<>();
+        Color cardColors = new Color();
+        cardColors.setColor1("White");
+        cardColors.setColor2("Black");
+        colors.add(cardColors);
+
+
         // Place static mock values in the response
         resource.setId("1002");
         resource.setName("GlaDOS");
-        resource.setColor("White");
+        resource.setColors(colors);
         resource.setType("Summon");
         resource.setSubType("AI");
         resource.setText("Blow the world up. Then make cake!");
