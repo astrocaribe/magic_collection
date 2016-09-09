@@ -77,6 +77,31 @@ public class CardController extends Controller {
         }
     }
 
+    /**
+     * GET Card Resource
+     *
+     * <p>Returns a card resource by given id. One card is returned in the JSON format.</p>
+     * @param cardId
+     * @return
+     */
+    public Result getCardById(String cardId) {
+        Logger.info(String.format("Starting request - [%s %s]", request().method(), request().path()));
+
+        try {
+            final Card result = dataStore.searchById(cardId);
+
+            HashMap<String, Card> response = new HashMap<>();
+
+            response.put("data", result);
+            JsonNode content = Json.toJson(response);
+
+            return ok(content);
+
+        } finally {
+            Logger.info(String.format("Starting request - [%s %s]", request().method(), request().path()));
+        }
+    }
+
     private static String getFilterValueFromQueryString(final String key, final Map<String, String[]> queryString) {
         final String filterKey = String.format("filter[%s]", key);
         final String value = queryString.containsKey(filterKey) ? queryString.get(filterKey)[0] : null;

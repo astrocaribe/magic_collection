@@ -5,6 +5,9 @@
 # An example controller showing a sample home page
 GET /ping                           controllers.HomeController.ping()
 
-# REST card routes
+# REST cards routes
 GET /cards                          controllers.CardController.getAllCards()
 GET /cards/filtered                 controllers.CardController.getCardsByFilter()
+
+# REST card routes
+GET /card/:card_id                  controllers.CardController.getCardById(card_id: String)

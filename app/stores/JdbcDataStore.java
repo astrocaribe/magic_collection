@@ -49,4 +49,16 @@ public class JdbcDataStore implements DataStore {
         return cards;
 
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Card searchById(String cardId) {
+        final CardDAO dao = this.dbi.onDemand(CardDAO.class);
+
+        return dao.searchById(cardId);
+    }
+
+
 }

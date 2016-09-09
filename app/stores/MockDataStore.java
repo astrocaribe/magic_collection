@@ -58,6 +58,21 @@ public class MockDataStore implements DataStore {
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public Card searchById(String cardId) {
+
+        // This search should only return exactly one card
+        final List<Card> cardResult =
+                resources.values().stream()
+                .filter(card -> card.getId().equals(cardId))
+                .collect(Collectors.toList());
+
+        return cardResult.get(0);
+    }
+
+
+    /**
      * Build a mock card object
      * @return a mock {@List<Card>} object
      */

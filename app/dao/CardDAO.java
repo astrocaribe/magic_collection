@@ -59,4 +59,16 @@ public interface CardDAO extends Transactional<CardDAO> {
     List<Card> searchByFilters(@Bind("color") final String color,
                                @Bind("type") final String type,
                                @Bind("rarity") final String rarity);
+
+
+    @SqlQuery(
+            "SELECT c.id, c.name, c.mana_cost, c.converted_mana_cost, c.type, c.sub_type, c.text, c.flavor_text, " +
+             "       c.expansion, c.power, c.toughness, c.rarity, c.quantity, c.card_number, cc.color_1, cc.color_2, " +
+             "       cc.color_3\n" +
+             "FROM cards c\n" +
+             "JOIN card_colors cc\n" +
+             "WHERE cc.card_id = c.id\n" +
+             "AND c.id = :card_id;"
+    )
+    Card searchById(@Bind("card_id") final String cardId);
 }
