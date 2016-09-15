@@ -1,5 +1,6 @@
 package stores;
 
+import models.Card;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,9 +49,21 @@ public class MockDataStoreTests {
         assertThat(subject.searchByFilters(null, null, "rare")).extracting("id").containsOnly("1001");
     }
 
+    // TODO: I need to expand a little more on this test
     @Test
     public void getFilteredByAllFiltersReturnsNull() {
         assertThat(subject.searchByFilters("purple", "ai", "common")).hasSize(0);
+    }
+
+    @Test
+    public void searchByValidIdReturnsResult() {
+        assertThat(subject.searchById("1001")).isInstanceOf(Card.class);
+        assertThat(subject.searchById("1001").getId()).isEqualTo("1001");
+    }
+
+    // TODO: I need to expand on this test
+    @Test
+    public void searchByInvalidIdReturnsNull() {
     }
 
 }

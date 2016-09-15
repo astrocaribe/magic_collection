@@ -22,4 +22,11 @@ public interface DataStore {
      * @return a filtered {@Link List<Card>} collection
      */
     List<Card> searchByFilters(String colorFilter, String typeFilter, String rarityFilter);
+
+    /**
+     * Return a card resource by given id
+     * @param cardId Id of desired card
+     * @return a single Card resource
+     */
+    Card searchById(String cardId);
 }

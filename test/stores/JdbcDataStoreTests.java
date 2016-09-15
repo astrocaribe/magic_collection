@@ -92,4 +92,13 @@ public class JdbcDataStoreTests {
         assertThat(subject.searchByFilters(null, null, "rare")).isEqualTo(mockList);
         Mockito.verify(mockDao).searchByFilters(null, null, "rare");
     }
+
+    @Test
+    public void getCardByIdReturnsDaoResults() {
+        Card result = new Card();
+        result.setId("21");
+        Mockito.when(mockDao.searchById("21")).thenReturn(result);
+        assertThat(subject.searchById("21")).isEqualTo(result);
+        Mockito.verify(mockDao).searchById("21");
+    }
 }
